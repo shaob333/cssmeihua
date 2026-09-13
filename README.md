@@ -1,79 +1,25 @@
-# 网页美化
-
-## 探针美化
-```shell
-<!-- 引入css -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/css/nezhacss.css">
-
-<!-- 底部 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/nezhajs.js"></script>
-
-<!-- 网页特效 - 樱花 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/yinghua.js"></script>
-
-<!-- 网页鼠标点击特效 - 爱心 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/aixin.js"></script>
-
-<!-- 网页鼠标点击特效 - 烟花波纹 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/yanhuabowen.js"></script>
-
-<!-- 网页特效 - 蜘蛛网 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/zhizhuwang.js"></script>
-
-<!-- 鼠标特效 - 小星星拖尾 -->
-<span class="js-cursor-container"></span>
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/xiaoxingxing.js"></script>
-```
-## Alist美化
-### 自定义头部
-```shell
-<!--Alist V3建议添加的，已经默认添加了，如果你的没有建议加上-->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.replaceAll"></script>
-
-<!--引入Alist的css样式-->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/css/alistcss.css">
-```
-### 自定义内容
-```shell
-<div id="customize">
-    <div>
-        <br />
-        <center class="dibu">
-            <div style="line-height: 20px; font-size: 9pt; font-weight: bold;">
-                <span>
-                    "
-                    <span style="color: rgb(0, 0, 0); font-weight: bold;" id="hitokoto">
-                        <a href="#" id="hitokoto_text">
-                            "人间烟火气，最抚凡人心."
-                        </a>
-                    </span> "
-                </span>
-                <p style="margin-left: 10rem; font-size: 8pt;">
-                    <small>
-                        —— Mochen
-                    </small>
-                </p>
-            </div>
-        </center>
-        <br />
-        <br />
-    </div>
-    <!--一言API-->
-    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-</div>
-
-<!-- 网页特效 - 樱花 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/yinghua.js"></script>
-
-<!-- 网页鼠标点击特效 - 爱心 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/aixin.js"></script>
-
-<!-- 网页鼠标点击特效 - 烟花波纹 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/yanhuabowen.js"></script>
-
-<!-- 网页特效 - 蜘蛛网 -->
-<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/zhizhuwang.js"></script>
-
-<!-- 鼠标特效 - 小星星拖尾 -->
-<span class="js-cursor-container"></span>
-```
+ <h1>Debian DDNS 一键脚本</h1>
+ <ul>
+<li>支持多域名解析。（注：如果域名超过两个，即三个以及三个以上，最好将ddns的时间调整至2分钟及两分钟以上）</li>
+<li>支持自定义ddns时间，Debian默认一分钟，alpine默认两分钟。</li>
+<li>支持Alpine、Debian。</li>
+<li>支持 Cloudflare：利用 Cloudflare API，自动更新指定域名的 DNS 记录。</li>
+<li>支持 IPv4 和 IPv6 双栈解析：可自动检测并更新网络的 IPv4 和 IPv6 地址。</li>
+<li>IPv4 和 IPv6 域名独立解析：支持 IPv4 和 IPv6 域名的分开解析。</li>
+<li>Telegram 通知：集成了 Telegram 通知功能，在 IP 变更时实时发送消息。</li>
+<li>脚本完全开源，可自行查看。</li>
+</ul>
+<h1 id="部署">部署</h1>
+<h2 id="准备">准备</h2>
+<ul>
+<li>cloudflare 全局token <a href="https://dash.cloudflare.com/profile/api-tokens">API 令牌 | Cloudflare</a></li>
+<li>cloudflare 注册邮箱</li>
+<li>一个可以DDns解析的域名</li>
+<li>telegram bot api token （可选）</li>
+<li>telegram user chat id （可选）</li>
+</ul>
+<p>在部署前需要在cloudflare里解析一个域名，根据需求解析A记录或者AAAA记录，如需双栈则需同时解析A记录和AAAA记录，A记录和AAAA记录可为同一个二级域名下不同的三级域名，例 ipv4.1.com ipv6.1.com 。</p>
+<p><img src="/upload/image-bdlv.png" alt="image-bdlv.png" sizes="(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)" srcset="/upload/image-bdlv.png?width=1200 1200w, /upload/image-bdlv.png?width=800 800w, /upload/image-bdlv.png?width=1600 1600w, /upload/image-bdlv.png?width=400 400w" /></p>
+<h2 id="一键脚本">一键脚本</h2>
+<pre><code>bash &lt;(wget -qO- https://raw.githubusercontent.com/mocchen/cssmeihua/mochen/shell/ddns.sh)
+</code></pre>
